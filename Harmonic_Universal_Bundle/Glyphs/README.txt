@@ -1,0 +1,1 @@
+This folder will contain glyph visuals and symbolic representations.

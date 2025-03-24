@@ -1,0 +1,1 @@
+This will hold spiral field coordinates and visual overlays.
