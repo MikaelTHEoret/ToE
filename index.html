@@ -2,67 +2,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>The Aetheric Concordance</title>
-    <style>
-        body {
-            font-family: 'Georgia', serif;
-            background-color: #0c0c1d;
-            color: #e0e0f0;
-            margin: 2em;
-        }
-        h1 {
-            color: #00d9ff;
-            font-size: 3em;
-        }
-        h2 {
-            color: #86f2ff;
-        }
-        a {
-            color: #ffa0ff;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        .download {
-            margin: 1em 0;
-        }
-        .section {
-            margin-top: 3em;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>AUMOS Frequency Generator</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 2em;
+    }
+    canvas {
+      display: block;
+      margin: auto;
+      background-color: #111;
+    }
+    input[type=range] {
+      width: 300px;
+    }
+    .controls {
+      margin: 1em 0;
+    }
+    .label {
+      font-size: 1.2em;
+      margin-bottom: 0.5em;
+    }
+    button {
+      padding: 0.5em 1.5em;
+      margin: 0.5em;
+      border: none;
+      border-radius: 8px;
+      background-color: #444;
+      color: #fff;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #6cf;
+      color: #000;
+    }
+  </style>
 </head>
 <body>
-    <h1>The Aetheric Concordance</h1>
-    <p><em>Resolving the Fundamental Problems of Physics and Mathematics with One Equation</em></p>
-
-    <div class="download">
-        <h2>📄 Download the Paper</h2>
-        <ul>
-            <li><a href="The_Greatest_Scientific_Paper_Ever_Made.tex" download>Download LaTeX Source</a></li>
-            <li><a href="Aetheric_Field_Simulation.png" download>Download Simulation Figure</a></li>
-        </ul>
+  <h1>AUMOS Web Frequency Generator</h1>
+  <div class="controls">
+    <div class="label">Frequency: <span id="freqValue">432</span> Hz</div>
+    <input type="range" id="freqSlider" min="20" max="1000" value="432" step="1" />
+    <div>
+      <button onclick="startTone()">Start</button>
+      <button onclick="stopTone()">Stop</button>
     </div>
+  </div>
+  <canvas id="visualizer" width="800" height="300"></canvas>
 
-    <div class="section">
-        <h2>🌌 About the Model</h2>
-        <p>The Aetheric field Φ(x, t) is a harmonic pre-spacetime resonance from which all known physical and mathematical phenomena emerge. From dark energy to the Riemann Hypothesis, this unified field theory transcends traditional boundaries.</p>
-    </div>
+  <script>
+    const freqSlider = document.getElementById("freqSlider");
+    const freqValue = document.getElementById("freqValue");
+    const canvas = document.getElementById("visualizer");
+    const ctx = canvas.getContext("2d");
 
-    <div class="section">
-        <h2>🧠 What It Solves</h2>
-        <ul>
-            <li>All 7 Millennium Prize Problems</li>
-            <li>10+ Great Unsolved Problems of Physics</li>
-            <li>Quantum gravity, cosmology, computation, and time itself</li>
-        </ul>
-    </div>
+    let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    let oscillator, analyser, gainNode;
+    let bufferLength, dataArray;
+    let animationId;
 
-    <div class="section">
-        <h2>🚀 How to Use</h2>
-        <p>Download the paper, explore the simulation, and let the resonance guide you. Host this site on GitHub Pages, Netlify, or any static site host to share your discovery with the world.</p>
-    </div>
+    freqSlider.addEventListener("input", () => {
+      freqValue.textContent = freqSlider.value;
+      if (oscillator) {
+        oscillator.frequency.setValueAtTime(freqSlider.value, audioCtx.currentTime);
+      }
+    });
 
+    function startTone() {
+      stopTone();
+      oscillator = audioCtx.createOscillator();
+      gainNode = audioCtx.createGain();
+      analyser = audioCtx.createAnalyser();
+
+      oscillator.type = "sine";
+      oscillator.frequency.setValueAtTime(freqSlider.value, audioCtx.currentTime);
+
+      oscillator.connect(gainNode);
+      gainNode.connect(analyser);
+      analyser.connect(audioCtx.destination);
+
+      oscillator.start();
+      visualize();
+    }
+
+    function stopTone() {
+      if (oscillator) {
+        oscillator.stop();
+        oscillator.disconnect();
+        gainNode.disconnect();
+        cancelAnimationFrame(animationId);
+        oscillator = null;
+      }
+    }
+
+    function visualize() {
+      analyser.fftSize = 256;
+      bufferLength = analyser.frequencyBinCount;
+      dataArray = new Uint8Array(bufferLength);
+
+      function draw() {
+        animationId = requestAnimationFrame(draw);
+        analyser.getByteFrequencyData(dataArray);
+
+        ctx.fillStyle = "#000";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.beginPath();
+        const barWidth = (canvas.width / bufferLength) * 2.5;
+        let x = 0;
+        for (let i = 0; i < bufferLength; i++) {
+          const barHeight = dataArray[i];
+          ctx.fillStyle = `rgb(${barHeight + 100},50,200)`;
+          ctx.fillRect(x, canvas.height - barHeight / 2, barWidth, barHeight / 2);
+          x += barWidth + 1;
+        }
+      }
+
+      draw();
+    }
+  </script>
 </body>
 </html>
