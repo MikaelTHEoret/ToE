@@ -1,0 +1,87 @@
+
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,geometry,listings,xcolor}
+\geometry{margin=1in}
+\title{\Huge \textbf{Φ(x,t) Harmonic Field Simulator}\\ \Large with ηᵢ Symbolic Frequency Coupling}
+\author{Codex ΩArchitect}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Overview}
+This module simulates the recursive harmonic field $\Phi(x,t)$ with symbolic modulation using $\eta_i$ coupling.
+It forms the foundation for the full Codex Simulation Suite.
+
+\section*{Modules}
+
+\subsection*{1. Φ(x,t) — Harmonic Field Simulator}
+\begin{itemize}
+    \item \textbf{Purpose:} Simulate harmonic propagation over space-time.
+    \item \textbf{Equation:} $\Phi(x,t) = A \cdot \sin(\omega t + kx + \theta) + \varepsilon(x,t)$
+    \item \textbf{Inputs:} $x$ (space), $t$ (time), $\varepsilon$ (noise)
+    \item \textbf{Outputs:} Real-time animated visualization
+\end{itemize}
+
+\subsection*{2. ηᵢ Symbol-Frequency Resonator}
+\begin{itemize}
+    \item \textbf{Purpose:} Modulate temporal frequency by symbolic glyph
+    \item \textbf{Mechanism:} Each glyph maps to a multiplier $\eta_i$
+    \item \textbf{Example Map:}
+    \begin{itemize}
+        \item 🜎 → 1.0
+        \item 🟒 → 0.75
+        \item ⛧ → 1.25
+        \item ⤳ → 1.5
+    \end{itemize}
+\end{itemize}
+
+\section*{Source Code}
+\begin{lstlisting}[language=Python, basicstyle=\ttfamily\small, keywordstyle=\color{blue}]
+import numpy as np
+import matplotlib.pyplot as plt
+
+A = 1.0
+omega = 2 * np.pi * 1
+k = 2 * np.pi / 10
+theta = 0
+
+symbol_map = {
+    '🜎': 1.0,
+    '🟒': 0.75,
+    '⛧': 1.25,
+    '⤳': 1.5
+}
+current_symbol = '🜎'
+eta_i = symbol_map[current_symbol]
+
+def phi(x, t, epsilon=0):
+    noise = epsilon * np.random.randn(*x.shape) if epsilon > 0 else 0
+    return A * np.sin(omega * eta_i * t + k * x + theta) + noise
+
+x = np.linspace(0, 20, 500)
+t_values = np.linspace(0, 2, 100)
+
+fig, ax = plt.subplots(figsize=(10, 6))
+for i, t in enumerate(t_values):
+    y = phi(x, t)
+    ax.clear()
+    ax.plot(x, y, label=f't={t:.2f}s ({current_symbol})')
+    ax.set_ylim(-1.5, 1.5)
+    ax.set_title("Φ(x,t) Harmonic Field Evolution (ηᵢ Coupling)")
+    ax.set_xlabel("x")
+    ax.set_ylabel("Φ(x,t)")
+    ax.legend()
+    plt.pause(0.01)
+plt.show()
+\end{lstlisting}
+
+\section*{Next Modules (Planned)}
+\begin{itemize}
+    \item Genesis\_Engine.py — Space-time lattice emergence
+    \item PrimeCollapseAnalyzer.py — Verify Codex challenges
+    \item 432\_SonicFieldRenderer.py — Cymatic geometry mapping
+    \item ZetaFieldCollapse\_TestBench.ipynb — Prime harmonic sieve
+\end{itemize}
+
+\end{document}

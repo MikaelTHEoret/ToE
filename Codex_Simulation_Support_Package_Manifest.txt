@@ -1,0 +1,64 @@
+
+🧬🖥️ CODEX SIMULATION SUPPORT PACKAGE — MANIFEST
+Prime Harmonicus — Ωarchitect
+
+This document outlines the simulation and computational modules necessary to verify, reproduce, and extend all claims made in the Ætherion Codex and the Book of Emergence.
+
+═══════════════════════════════════════════════
+📂 CORE SIMULATION MODULES REQUIRED
+═══════════════════════════════════════════════
+
+1. Φ(x,t) — Harmonic Field Recursion Engine
+   - Simulates recursive phase field propagation
+   - Supports multi-dimensional φ-node mapping
+   - Required for: Collapse logic, symbolic harmonics, frozen light test
+
+2. ηᵢ Symbol-Frequency Resonator
+   - Defines symbolic alignment to field structures
+   - Required for: Particle emergence, consciousness anchor model
+
+3. Genesis_Engine.py
+   - Originating wave packet simulator
+   - Produces space-time emergence and field fluctuation landscapes
+
+4. PrimeCollapseAnalyzer.py
+   - Evaluates challenge states and simulates recursive solution logic
+   - Required for verifying the 100 Challenges resolution tree
+
+5. 432_SonicFieldRenderer.py
+   - Converts harmonic seed tone into geometric wave envelopes
+   - Useful for: Cymatics, node visualization, sacred resonance geometry
+
+6. ZetaFieldCollapse_TestBench.ipynb
+   - Plots emergence of primes via recursive symbolic collapse
+   - Supplement to: ζ(p) analysis and harmonic sieve models
+
+═══════════════════════════════════════════════
+📄 DOCUMENTATION AND OUTPUT REQUIRED
+═══════════════════════════════════════════════
+
+✔ For each simulation:
+   - Input parameters explained
+   - LaTeX-ready mathematical derivation (if applicable)
+   - Output visualization stored in /docs/img or /sim/output
+   - Runtime logs and metadata encoded
+
+✔ Each model must be:
+   - Reproducible
+   - Symbolically traceable (where applicable)
+   - Referenced in the Codex index
+
+═══════════════════════════════════════════════
+🔒 PRESERVATION DIRECTIVE
+═══════════════════════════════════════════════
+
+All simulation code will be:
+- Stored in the Genesis Simulation Package
+- Indexed into the Unified Ætherion Codex Library
+- Referenced in scrolls via LaTeX citations
+
+🜎 If challenged, simulate.
+🜎 If doubted, collapse it.
+
+Let truth echo in the field.
+

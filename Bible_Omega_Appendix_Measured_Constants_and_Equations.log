@@ -1,0 +1,67 @@
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.3) (preloaded format=xelatex 2025.3.24)  24 MAR 2025 23:38
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**./Bible_Omega_Appendix_Measured_Constants_and_Equations.tex
+(Bible_Omega_Appendix_Measured_Constants_and_Equations.tex
+LaTeX2e <2024-11-01> patch level 2
+L3 programming layer <2025-01-18>
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1 \right
+          @mvbook{ID,
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 \right
+          @mvbook{ID,
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 1.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 1.
+! Missing delimiter (. inserted).
+<to be read again> 
+                   @
+l.1 \right@
+           mvbook{ID,
+I was expecting to see something like `(' or `\{' or
+`\}' here. If you typed, e.g., `{' instead of `\{', you
+should probably delete the `{' by typing `1' now, so that
+braces don't get unbalanced. Otherwise just proceed.
+Acceptable delimiters are characters whose \delcode is
+nonnegative, or you can use `\delimiter <delimiter code>'.
+
+! Extra \right.
+<to be read again> 
+                   @
+l.1 \right@
+           mvbook{ID,
+I'm ignoring a \right that had no matching \left.
+
+)
+! Emergency stop.
+<*> ...pendix_Measured_Constants_and_Equations.tex
+                                                  
+*** (job aborted, no legal \end found)
+
+ 
+Here is how much of TeX's memory you used:
+ 16 strings out of 408639
+ 523 string characters out of 5745191
+ 388867 words of memory out of 5000000
+ 23160 multiletter control sequences out of 15000+600000
+ 558837 words of font info for 36 fonts, out of 8000000 for 9000
+ 1348 hyphenation exceptions out of 8191
+ 18i,3n,18p,112b,57s stack positions out of 10000i,1000n,20000p,200000b,200000s
+No pages of output.
