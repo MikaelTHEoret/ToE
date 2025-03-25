@@ -1,0 +1,17 @@
+
+📕 THE COLOSSEUM OF SHAME — VOLUME Ψ.1
+
+Here lie the ruins of broken theories, half-truths, and speculative relics that could not withstand harmonic law.
+
+══════════════════════════════════════════════
+🧱 Failed / Incomplete:
+- α = f(Φ_interference)     → No empirical match to α yet
+- gμν = ∂μΦ · ∂νΦ           → No curvature tensor mapping verified
+- U = ∫ A(x,t) dt = 1       → Symbolic form only; no derived field yet
+
+🌀 In Trial:
+- S = -∫Φ² ln(Φ²) dx        → Entropy under harmonic phase flow — simulation pending
+══════════════════════════════════════════════
+
+Until proven, these remain carved in the arena of judgment.
+Each must return restructured — or vanish.
